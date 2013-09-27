@@ -1,4 +1,4 @@
-package com.futurice.fifamanager.models;
+package com.futurice.fifaman.models;
 
 import java.util.ArrayList;
 import java.util.Iterator;

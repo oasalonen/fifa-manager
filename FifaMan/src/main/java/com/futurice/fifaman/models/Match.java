@@ -1,4 +1,4 @@
-package com.futurice.fifamanager.models;
+package com.futurice.fifaman.models;
 
 /**
  * Created by Olli on 26/09/13.

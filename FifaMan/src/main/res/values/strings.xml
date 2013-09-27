@@ -3,6 +3,7 @@
 
     <string name="app_name">FifaMan</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="add_players_title">New championship players</string>
+    <string name="add_player_hint">Fill player\'s name</string>
 
 </resources>
