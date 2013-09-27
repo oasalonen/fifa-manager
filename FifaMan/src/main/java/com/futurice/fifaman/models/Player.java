@@ -7,7 +7,12 @@ public class Player {
 
     private String mName;
 
+    public Player() {
+        mName = "";
+    }
+
     public Player(String name) {
+        assert name != null;
         mName = name;
     }
 
@@ -16,6 +21,7 @@ public class Player {
     }
 
     public void setName(String name) {
+        assert name != null;
         mName = name;
     }
 

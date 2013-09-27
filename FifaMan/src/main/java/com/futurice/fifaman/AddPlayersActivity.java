@@ -1,12 +1,15 @@
 package com.futurice.fifaman;
 
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,11 +27,20 @@ public class AddPlayersActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAdapter = new PlayerListAdapter();
+
         View footer = getLayoutInflater().inflate(R.layout.add_player_list_footer, null);
-        ListView list = (ListView)findViewById(android.R.id.list);
+        ImageButton addPlayerButton = (ImageButton)footer.findViewById(android.R.id.button1);
+        addPlayerButton.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.addPlayer();
+            }
+        });
+
+        ListView list = getListView();
         list.addFooterView(footer);
 
-        mAdapter = new PlayerListAdapter();
         setListAdapter(mAdapter);
     }
 
@@ -46,6 +58,12 @@ public class AddPlayersActivity extends ListActivity {
 
         public PlayerListAdapter() {
             mPlayers = new ArrayList<Player>();
+        }
+
+        public void addPlayer() {
+            Player player = new Player();
+            mPlayers.add(player);
+            notifyDataSetChanged();
         }
 
         @Override

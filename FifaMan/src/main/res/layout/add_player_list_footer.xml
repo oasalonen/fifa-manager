@@ -5,7 +5,8 @@
     a:layout_width="match_parent"
     a:layout_height="@dimen/add_player_list_item_height">
 
-    <ImageButton a:layout_width="match_parent"
+    <ImageButton a:id="@android:id/button1"
+        a:layout_width="match_parent"
         a:layout_height="match_parent"
         a:src="@android:drawable/ic_input_add"/>
 
