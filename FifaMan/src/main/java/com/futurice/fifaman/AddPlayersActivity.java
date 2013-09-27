@@ -87,8 +87,10 @@ public class AddPlayersActivity extends ListActivity {
                 convertView = getLayoutInflater().inflate(R.layout.add_player_list_item, parent, false);
             }
 
+            Player player = mPlayers.get(position);
+
             TextView nameField = (TextView)convertView.findViewById(android.R.id.text1);
-            nameField.setText(mPlayers.get(position).getName());
+            nameField.setText(player.getName());
             return convertView;
         }
     }

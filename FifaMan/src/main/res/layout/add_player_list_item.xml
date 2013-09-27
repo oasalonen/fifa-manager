@@ -6,7 +6,7 @@
     a:layout_width="match_parent"
     a:layout_height="@dimen/add_player_list_item_height">
 
-    <TextView a:id="@android:id/text1"
+    <EditText a:id="@android:id/text1"
         a:layout_weight="1"
         a:layout_width="wrap_content"
         a:layout_height="match_parent"
