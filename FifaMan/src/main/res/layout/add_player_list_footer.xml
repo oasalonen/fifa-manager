@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:a="http://schemas.android.com/apk/res/android"
-    a:orientation="vertical"
+    a:orientation="horizontal"
     a:layout_width="match_parent"
     a:layout_height="@dimen/add_player_list_item_height">
 
+    <EditText a:id="@android:id/text1"
+        a:layout_weight="1"
+        a:layout_width="fill_parent"
+        a:layout_height="match_parent"
+        a:gravity="center_vertical"
+        a:maxLines="1"
+        a:imeOptions="actionDone"
+        a:inputType="textPersonName"
+        a:hint="@string/add_player_hint"/>
+
     <ImageButton a:id="@android:id/button1"
-        a:layout_width="match_parent"
+        a:layout_width="wrap_content"
         a:layout_height="match_parent"
         a:src="@android:drawable/ic_input_add"/>
 
