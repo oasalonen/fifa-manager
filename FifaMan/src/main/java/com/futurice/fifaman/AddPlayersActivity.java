@@ -147,6 +147,13 @@ public class AddPlayersActivity extends ListActivity {
                 holder = (ListItemViewHolder) convertView.getTag();
             }
 
+            if (position % 2 == 1) {
+                convertView.setBackgroundColor(getResources().getColor(R.color.add_player_list_item_background_highlight));
+            }
+            else {
+                convertView.setBackgroundColor(0x00000000);
+            }
+
             Player player = mPlayers.get(position);
             holder.nameField.setText(player.getName());
             holder.removeButton.setOnClickListener(new ImageButton.OnClickListener() {
