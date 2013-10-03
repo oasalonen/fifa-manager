@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">FifaMan</string>
-    <string name="action_settings">Settings</string>
-    <string name="add_players_title">New championship players</string>
+    <string name="add_players_title">Create roster</string>
     <string name="add_player_hint">Enter player\'s name</string>
+    <string name="action_done">Done</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_recent">Recent</string>
 
 </resources>

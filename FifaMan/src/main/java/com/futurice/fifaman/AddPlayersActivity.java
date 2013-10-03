@@ -1,11 +1,14 @@
 package com.futurice.fifaman;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -30,8 +33,53 @@ public class AddPlayersActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        createActionBar();
         setContentView(R.layout.activity_main);
+        createFooter();
+        setListAdapter(mAdapter);
+    }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.recent_cancel, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.recent:
+                return true;
+            case R.id.cancel:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void createActionBar() {
+        final LayoutInflater inflater = (LayoutInflater) getActionBar().getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        final View doneActionBarView = inflater.inflate(R.layout.actionbar_view_done, null);
+        final View doneAction = doneActionBarView.findViewById(R.id.actionbar_done);
+        doneAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                ActionBar.DISPLAY_SHOW_CUSTOM |
+                ActionBar.DISPLAY_SHOW_HOME |
+                ActionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setCustomView(doneActionBarView);
+    }
+
+    private void createFooter() {
         final View footer = getLayoutInflater().inflate(R.layout.add_player_list_footer, null);
 
         final ImageButton addPlayerButton = (ImageButton)footer.findViewById(android.R.id.button1);
@@ -47,13 +95,13 @@ public class AddPlayersActivity extends ListActivity {
         mPlayerNameEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                addPlayer();
-                return true;
-            }
-            else {
-                return false;
-            }
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    addPlayer();
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
         });
         mPlayerNameEdit.addTextChangedListener(new TextWatcher() {
@@ -73,16 +121,6 @@ public class AddPlayersActivity extends ListActivity {
 
         ListView list = getListView();
         list.addFooterView(footer);
-
-        setListAdapter(mAdapter);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     private void addPlayer() {

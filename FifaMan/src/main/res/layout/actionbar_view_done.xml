@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:a="http://schemas.android.com/apk/res/android"
+    a:orientation="horizontal"
+    a:layout_width="match_parent"
+    a:layout_height="match_parent"
+    a:divider="?android:attr/dividerVertical"
+    a:showDividers="end"
+    a:dividerPadding="12dp">
+
+    <include layout="@layout/actionbar_done_button"/>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:a="http://schemas.android.com/apk/res/android">
+    <item a:id="@+id/recent"
+        a:title="@string/action_recent"
+        a:showAsAction="never"/>
+
+    <item a:id="@+id/cancel"
+        a:title="@string/action_cancel"
+        a:icon="@drawable/ic_action_cancel"
+        a:showAsAction="never"/>
+</menu>
