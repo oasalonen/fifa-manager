@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:a="http://schemas.android.com/apk/res/android"
+    a:orientation="horizontal"
+    a:layout_width="match_parent"
+    a:layout_height="@dimen/add_player_list_item_height"
+    a:layout_marginBottom="@dimen/list_item_bottom_margin">
+
+    <CheckBox a:id="@android:id/checkbox"
+        a:layout_height="fill_parent"
+        a:layout_width="fill_parent"
+        a:textSize="@dimen/add_player_list_item_text_size"/>
+
+</LinearLayout>

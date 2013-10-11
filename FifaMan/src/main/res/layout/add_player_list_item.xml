@@ -5,7 +5,7 @@
     a:orientation="horizontal"
     a:layout_width="match_parent"
     a:layout_height="@dimen/add_player_list_item_height"
-    a:layout_marginBottom="10dp">
+    a:layout_marginBottom="@dimen/list_item_bottom_margin">
 
     <TextView a:id="@android:id/text1"
         a:layout_weight="1"

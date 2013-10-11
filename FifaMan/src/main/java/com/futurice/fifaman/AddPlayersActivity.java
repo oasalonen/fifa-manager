@@ -2,6 +2,7 @@ package com.futurice.fifaman;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -66,6 +67,8 @@ public class AddPlayersActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.recent:
+                Intent intent = new Intent(this, RecentPlayersActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.cancel:
                 finish();

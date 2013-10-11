@@ -5,4 +5,5 @@
     <dimen name="page_title_text_size">20dp</dimen>
     <dimen name="add_player_list_item_text_size">20dp</dimen>
     <dimen name="add_player_list_item_height">48dp</dimen>
+    <dimen name="list_item_bottom_margin">5dp</dimen>
 </resources>
