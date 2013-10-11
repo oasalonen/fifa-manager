@@ -26,7 +26,9 @@ import java.util.List;
 
 public class AddPlayersActivity extends ListActivity {
 
-    private final List<Player> mPlayers = new ArrayList<Player>();
+    private static final String PLAYERS_DATA_KEY = "players";
+
+    private final ArrayList<Player> mPlayers = new ArrayList<Player>();
     private final PlayerListAdapter mAdapter = new PlayerListAdapter();
     private EditText mPlayerNameEdit;
 
@@ -39,6 +41,18 @@ public class AddPlayersActivity extends ListActivity {
         setListAdapter(mAdapter);
     }
 
+    @Override
+    protected void onRestoreInstanceState(final Bundle data) {
+        super.onRestoreInstanceState(data);
+        List<Player> players = data.getParcelableArrayList(PLAYERS_DATA_KEY);
+        mPlayers.addAll(players);
+    }
+
+    @Override
+    protected void onSaveInstanceState(final Bundle data) {
+        data.putParcelableArrayList(PLAYERS_DATA_KEY, mPlayers);
+        super.onSaveInstanceState(data);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
