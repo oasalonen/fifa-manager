@@ -13,23 +13,25 @@ import com.futurice.fifaman.models.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentPlayersActivity extends ListActivity {
+import rx.Observer;
+import rx.android.concurrency.AndroidSchedulers;
+import rx.concurrency.Schedulers;
+
+public class RecentPlayersActivity extends ListActivity implements Observer<Player> {
 
     private final List<Player> mPlayers = new ArrayList<Player>();
     private final RecentPlayersListAdapter mAdapter = new RecentPlayersListAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Test code
-        mPlayers.add(new Player("Joe"));
-        mPlayers.add(new Player("Jimmy"));
-        mPlayers.add(new Player("Jane"));
-        mPlayers.add(new Player("John"));
-        // ---------
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recent_players_activity);
         setListAdapter(mAdapter);
+
+        Repository repo = new Repository();
+        repo.getPlayers().subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(this);
     }
 
     @Override
@@ -37,6 +39,20 @@ public class RecentPlayersActivity extends ListActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.recent_players, menu);
         return true;
+    }
+
+    @Override
+    public void onCompleted() {
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+    }
+
+    @Override
+    public void onNext(Player player) {
+        mPlayers.add(player);
+        mAdapter.notifyDataSetChanged();
     }
 
     private class ListItemViewHolder {
