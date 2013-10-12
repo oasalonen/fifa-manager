@@ -7,6 +7,7 @@ import com.futurice.fifaman.models.Player;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
+import rx.subscriptions.BooleanSubscription;
 import rx.subscriptions.Subscriptions;
 
 /**
@@ -18,15 +19,21 @@ public class Repository {
         return Observable.create(new Observable.OnSubscribeFunc<Player>() {
             @Override
             public Subscription onSubscribe(Observer<? super Player> observer) {
-                SystemClock.sleep(300);
-                observer.onNext(new Player("Joe"));
-                SystemClock.sleep(300);
-                observer.onNext(new Player("Jimmy"));
-                SystemClock.sleep(300);
-                observer.onNext(new Player("Jane"));
-                SystemClock.sleep(300);
-                observer.onNext(new Player("John"));
-                return Subscriptions.empty();
+                BooleanSubscription subscription = new BooleanSubscription();
+
+                try {
+                    SystemClock.sleep(1500);
+                    String[] players = new String[] { "Joe", "Jimmy", "Jane", "John"};
+                    for (int i = 0; i < players.length; i++) {
+                        SystemClock.sleep(300);
+                        observer.onNext(new Player(players[i]));
+                    }
+                    observer.onCompleted();
+                }
+                catch (Throwable ex) {
+                    observer.onError(ex);
+                }
+                return subscription;
             }
         });
     }
